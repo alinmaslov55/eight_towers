@@ -3,6 +3,7 @@ main
 .git
 .gitignore
 README.md
+.github
 
 
 # Prerequisites
