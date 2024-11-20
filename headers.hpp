@@ -6,4 +6,6 @@
 
 extern const int ANCHOR;
 
+void newline();
+
 #endif

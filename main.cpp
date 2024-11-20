@@ -1,10 +1,21 @@
 #include "headers.hpp"
 #include "solution.hpp"
+#include "menus.hpp"
+#include <memory>
+
 int main(){
 
-    Solution solution;
+    std::unique_ptr<Menu> menu_of_program(new Menu());
 
-    solution.printChessTable();
+    int option;
+
+    do{
+
+        menu_of_program->printMenu();
+        option = menu_of_program->getOption();
+        menu_of_program->executeOption();
+
+    }while(option);
 
     return 0;
 }
