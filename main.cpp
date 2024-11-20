@@ -1,8 +1,10 @@
 #include "headers.hpp"
-
+#include "solution.hpp"
 int main(){
 
-    print("Starting");
+    Solution solution;
+
+    solution.printChessTable();
 
     return 0;
 }
