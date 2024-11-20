@@ -5,10 +5,14 @@
 
 class Solution {
     std::vector<std::vector<bool>> ChessTable;
+    
+
     public:
     Solution();
 
     void printChessTable() const;
+
+    void iterateOverSolution(int rowNumber);
 
     ~Solution();
 };
