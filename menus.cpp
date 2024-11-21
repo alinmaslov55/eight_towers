@@ -18,7 +18,21 @@ void Menu::printMenu() const {
 
 int Menu::getOption(){
     std::cout << "Choose an option:" << std::endl;
-    std::cin >> current_option;
+    while (true) {
+
+        std::cin >> current_option;
+
+        // Check if cin is in a fail state
+        if (std::cin.fail()) {
+            std::cout << "\nPlease enter a valid input type" << std::endl;
+            std::cin.clear();               // Clear the fail state
+            std::cin.ignore(1000, '\n');    // Discard invalid input
+        } else {
+            break; // Input is valid, exit the loop
+        }
+    }
+
+
     return current_option;
 }
 
@@ -26,6 +40,7 @@ void Menu::executeOption(){
     switch(current_option){
         case 1:
             problem->iterateOverSolution(0);
+            std::cout << "\nNumber of solutions:" << problem->getCounter() << std::endl;
             break;
         case 0:
             std::cout << "Exiting the program..." << std::endl;

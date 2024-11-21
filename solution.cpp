@@ -5,6 +5,8 @@ Solution::Solution(){
     // prin resize() i se aloca execat 8 randuri si coloane
     // celulele sunt initializate cu false
     ChessTable.resize(ANCHOR, std::vector<bool>(ANCHOR, false));
+
+    counter_of_solutions = 0;
 }
 
 Solution::~Solution(){
@@ -12,7 +14,7 @@ Solution::~Solution(){
 }
 
 
-void Solution::printChessTable() const {
+void Solution::printChessTable(){
     // Afisarea matricii
     /*
 
@@ -36,7 +38,7 @@ void Solution::printChessTable() const {
     }
     std::cout << "\n|-----------------|\n";
 
-
+    increase();
 }
 void Solution::iterateOverSolution(int columnNumber){
     if(columnNumber == ANCHOR){
@@ -54,4 +56,7 @@ void Solution::iterateOverSolution(int columnNumber){
 
         }
     }
+}
+const int& Solution::getCounter() const {
+    return counter_of_solutions;
 }
