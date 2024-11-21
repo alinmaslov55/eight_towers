@@ -25,14 +25,33 @@ void Solution::printChessTable() const {
     ******T*
     *******T
     
-    */
-
+    */ 
+    std::cout << "\n|-----------------|";
     for(auto row : ChessTable){
+        std::cout << "\n| ";
         for(auto cell : row){
             std::cout << (cell ? "T" : "*") << " ";
         }
-        std::cout << std::endl;
+        std::cout << "|";
     }
+    std::cout << "\n|-----------------|\n";
 
 
+}
+void Solution::iterateOverSolution(int columnNumber){
+    if(columnNumber == ANCHOR){
+        // inregistrare Solutie
+        printChessTable();
+        return;
+    }
+    for(int i = 0; i < ANCHOR; i++){
+        if(rowIsFalse(i)){
+
+            ChessTable[i][columnNumber] = true;
+            iterateOverSolution(columnNumber + 1);
+            
+            ChessTable[i][columnNumber] = false;
+
+        }
+    }
 }

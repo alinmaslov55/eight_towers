@@ -12,7 +12,7 @@ Menu::~Menu(){
 void Menu::printMenu() const {
     std::cout << "Welcome to the Eight Towers Problem Solver!" << std::endl;
     std::cout << "Choose an option:" << std::endl;
-    std::cout << "1. Solve the problem" << std::endl;
+    std::cout << "1. Show all the solutions in the terminal" << std::endl;
     std::cout << "0. Exit" << std::endl;
 }
 
@@ -25,7 +25,7 @@ int Menu::getOption(){
 void Menu::executeOption(){
     switch(current_option){
         case 1:
-            problem->printChessTable();
+            problem->iterateOverSolution(0);
             break;
         case 0:
             std::cout << "Exiting the program..." << std::endl;
