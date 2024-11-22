@@ -14,6 +14,32 @@ Solution::~Solution(){
 }
 
 
+void Solution::printChessTable(std::ofstream &file){
+    // Afisarea matricii
+    /*
+
+    T*******
+    *T******
+    **T*****
+    ***T****
+    ****T***
+    *****T**
+    ******T*
+    *******T
+    
+    */ 
+    file << "\n|-----------------|";
+    for(auto row : ChessTable){
+        file << "\n| ";
+        for(auto cell : row){
+            file << (cell ? "T" : "*") << " ";
+        }
+        file << "|";
+    }
+    file << "\n|-----------------|\n";
+
+    increase();
+}
 void Solution::printChessTable(){
     // Afisarea matricii
     /*
@@ -51,6 +77,23 @@ void Solution::iterateOverSolution(int columnNumber){
 
             ChessTable[i][columnNumber] = true;
             iterateOverSolution(columnNumber + 1);
+            
+            ChessTable[i][columnNumber] = false;
+
+        }
+    }
+}
+void Solution::iterateOverSolution(int columnNumber, std::ofstream& file){
+    if(columnNumber == ANCHOR){
+        // inregistrare Solutie
+        printChessTable(file);
+        return;
+    }
+    for(int i = 0; i < ANCHOR; i++){
+        if(rowIsFalse(i)){
+
+            ChessTable[i][columnNumber] = true;
+            iterateOverSolution(columnNumber + 1, file);
             
             ChessTable[i][columnNumber] = false;
 

@@ -23,10 +23,12 @@ class Solution {
     Solution();
 
     void printChessTable();
+    void printChessTable(std::ofstream& file);
 
     const int& getCounter() const;
 
     void iterateOverSolution(int columnNumber);
+    void iterateOverSolution(int columnNumber, std::ofstream& file);
 
     ~Solution();
 };
