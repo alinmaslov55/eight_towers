@@ -4,7 +4,7 @@ main
 .gitignore
 README.md
 .github
-
+*.txt
 
 # Prerequisites
 *.d
