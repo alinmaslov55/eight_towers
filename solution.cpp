@@ -103,3 +103,49 @@ void Solution::iterateOverSolution(int columnNumber, std::ofstream& file){
 const int& Solution::getCounter() const {
     return counter_of_solutions;
 }
+void Solution::iterateOverSolution(int columnNumber, int nSolutions){
+    if(nSolutions <= getCounter()) return;
+
+    if(columnNumber == ANCHOR){
+        // inregistrare Solutie
+        printChessTable();
+        return;
+    }
+    for(int i = 0; i < ANCHOR; i++){
+        if(rowIsFalse(i)){
+
+            ChessTable[i][columnNumber] = true;
+            iterateOverSolution(columnNumber + 1, nSolutions);
+
+            ChessTable[i][columnNumber] = false;
+
+        }
+    }
+}
+void Solution::iterateOverSolutionRandom(int columnNumber, int nSolutions){
+    if(nSolutions <= getCounter()) return;
+
+    if(columnNumber == ANCHOR){
+        // inregistrare Solutie
+        printChessTable();
+        return;
+    }
+
+    std::vector<int> variants;
+    
+    for(int i = 0; i < ANCHOR; i++){
+        if(rowIsFalse(i)) variants.push_back(i);
+    }
+
+    std::random_device rd;
+    std::mt19937 gen(rd()); // Random number generator
+
+    std::shuffle(variants.begin(), variants.end(), gen);
+
+    for(int i : variants){
+        ChessTable[i][columnNumber] = true;
+        iterateOverSolution(columnNumber + 1, nSolutions);
+
+        ChessTable[i][columnNumber] = false;
+    }
+}
