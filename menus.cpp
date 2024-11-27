@@ -43,7 +43,7 @@ int Menu::getOption(){
 void Menu::executeOption(){
 
     std::ofstream file;
-    int n_solutions = 7;
+    int n_solutions{0};
     
     switch(current_option){
         case 1:
@@ -57,13 +57,13 @@ void Menu::executeOption(){
             problem->reset();
             break;
         case 3:
-            n_solutions = 7;
+            n_solutions = Solution::getNumSolutions();
             problem->iterateOverSolution(0, n_solutions);
             std::cout << "\nNumber of total solutions:" << problem->getCounter() << std::endl;
             problem->reset();
             break;
         case 4:
-            n_solutions = 7;
+            n_solutions = Solution::getNumSolutions();
             problem->iterateOverSolutionRandom(0, n_solutions);
             std::cout << "\nNumber of total solutions:" << problem->getCounter() << std::endl;
             problem->reset();

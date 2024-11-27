@@ -28,6 +28,8 @@ void Solution::printChessTable(std::ofstream &file){
     *******T
     
     */ 
+
+    file << "\nSolution nr. " << this->getCounter();
     file << "\n|-----------------|";
     for(auto row : ChessTable){
         file << "\n| ";
@@ -54,7 +56,10 @@ void Solution::printChessTable(){
     *******T
     
     */ 
-    std::cout << "\n|-----------------|";
+    increase();
+
+    std::cout << "\nSolution nr. " << this->getCounter();
+    std::cout << "\n-------------------";
     for(auto row : ChessTable){
         std::cout << "\n| ";
         for(auto cell : row){
@@ -62,9 +67,8 @@ void Solution::printChessTable(){
         }
         std::cout << "|";
     }
-    std::cout << "\n|-----------------|\n";
+    std::cout << "\n-------------------\n";
 
-    increase();
 }
 void Solution::iterateOverSolution(int columnNumber){
     if(columnNumber == ANCHOR){
@@ -148,4 +152,15 @@ void Solution::iterateOverSolutionRandom(int columnNumber, int nSolutions){
 
         ChessTable[i][columnNumber] = false;
     }
+}
+
+int Solution::getNumSolutions(){
+    int numSolutions{0};
+    
+    do{
+        std::cout << "How many solutions(1 - 40320): ";
+        std::cin >> numSolutions;
+    }while(!(numSolutions > 0 && numSolutions <= 40320));
+    
+    return numSolutions;
 }

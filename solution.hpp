@@ -24,6 +24,8 @@ class Solution {
     }
     Solution();
 
+    static int getNumSolutions();
+
     void printChessTable();
     void printChessTable(std::ofstream& file);
 
