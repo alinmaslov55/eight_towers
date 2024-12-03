@@ -47,6 +47,7 @@ void Menu::executeOption(){
 
     std::ofstream file;
     int n_solutions{0};
+    std::string filename("");
     
     switch(current_option){
         case 1:
@@ -55,10 +56,11 @@ void Menu::executeOption(){
             problem->reset();
             break;
         case 2:
-            file.open(getFileName());
+            filename = extract_filename(getFileName());
             problem->iterateOverSolution(0, file);
             problem->reset();
             this->giveDockerTip();
+            std::cout << "Name of your file is : " << filename << std::endl;
             break;
         case 3:
             n_solutions = Solution::getNumSolutions();
