@@ -28,6 +28,7 @@ class Menu {
     void printMenu() const;
     int getOption();
     void executeOption();
+    void giveDockerTip();
     ~Menu();
 };
 

@@ -10,7 +10,6 @@ Menu::~Menu(){
 }
 
 void Menu::printMenu() const {
-    std::cout << "Welcome to the Eight Towers Problem Solver!" << std::endl;
     std::cout << "Choose an option:" << std::endl;
     std::cout << "1. Show all the solutions in the terminal" << std::endl;
     std::cout << "2. Print all the solutions in a txt file" << std::endl;
@@ -39,6 +38,10 @@ int Menu::getOption(){
 
     return current_option;
 }
+void Menu::giveDockerTip(){
+    std::cout << "\nIn order to extract the file you have created use the command:";
+    std::cout << "\ndocker cp <container_id/container_name>:usr/local/project_folder/<name_of_file.txt>  .\n";
+}
 
 void Menu::executeOption(){
 
@@ -55,6 +58,7 @@ void Menu::executeOption(){
             file.open(getFileName());
             problem->iterateOverSolution(0, file);
             problem->reset();
+            this->giveDockerTip();
             break;
         case 3:
             n_solutions = Solution::getNumSolutions();
