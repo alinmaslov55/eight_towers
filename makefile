@@ -1,20 +1,16 @@
-CXX := g++
-CXXFLAGS := -Wall -Wextra -std=c++20
-
-TARGET := main
-
-SRCS := $(wildcard *.cpp)
-OBJECTS := $(SRCS:.cpp=.o)
+CC = g++
+CFLAGS = -Wall -std=c++20 -I/usr/local/include
+LDFLAGS = -L/usr/local/lib -lraylib -lGL -lm -lpthread -ldl -lrt -lX11
+SOURCES = main.cpp
+TARGET = game
 
 all: $(TARGET)
 
-$(TARGET): $(OBJECTS)
-	$(CXX) $(CXXFLAGS) -o $@ $^
+$(TARGET): $(SOURCES)
+	$(CC) $(CFLAGS) $(SOURCES) -o $(TARGET) $(LDFLAGS)
 
-%.o: %.cpp
-	$(CXX) $(CXXFLAGS) -c $< -o $@
+run: $(TARGET)
+	./$(TARGET)
 
 clean:
-	rm -f $(OBJECTS) $(TARGET)
-
-.PHONY: all clean
+	rm -f $(TARGET)
