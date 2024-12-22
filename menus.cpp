@@ -57,6 +57,7 @@ void Menu::executeOption(){
             break;
         case 2:
             filename = extract_filename(getFileName());
+            file.open(filename);
             problem->iterateOverSolution(0, file);
             problem->reset();
             this->giveDockerTip();
