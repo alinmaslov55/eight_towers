@@ -8,8 +8,4 @@
 
 extern const int ANCHOR;
 
-void newline();
-
-const std::string extract_filename(std::string line);
-
 #endif
