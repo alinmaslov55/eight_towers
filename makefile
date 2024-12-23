@@ -1,16 +1,16 @@
+# Compiler and flags
 CC = g++
 CFLAGS = -Wall -std=c++20 -I/usr/local/include
 LDFLAGS = -L/usr/local/lib -lraylib -lGL -lm -lpthread -ldl -lrt -lX11
-SOURCES = main.cpp
-TARGET = game
 
-all: $(TARGET)
+SRCS = main.cpp
+OBJS = $(SRCS:.cpp=.o)
+EXEC = main
 
-$(TARGET): $(SOURCES)
-	$(CC) $(CFLAGS) $(SOURCES) -o $(TARGET) $(LDFLAGS)
+all: $(EXEC)
 
-run: $(TARGET)
-	./$(TARGET)
+$(EXEC): $(OBJS)
+	$(CC) $(CFLAGS) -o $@ $^ $(LDFLAGS)
 
 clean:
-	rm -f $(TARGET)
+	rm -f $(OBJS) $(EXEC)

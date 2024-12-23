@@ -1,32 +1,36 @@
-# Use a base image with GCC for building Raylib projects
-FROM debian:bullseye
+# Base image
+# Use an official Debian image with build tools
+FROM debian:bullseye-slim
 
-# Install necessary packages
+# Set the working directory in the container
+WORKDIR /app
+
+# Install necessary dependencies
 RUN apt-get update && apt-get install -y \
     build-essential \
-    cmake \
     git \
-    libasound2-dev \
+    wget \
+    cmake \
     libgl1-mesa-dev \
     libx11-dev \
-    libxrandr-dev \
     libxi-dev \
     libxcursor-dev \
+    libxrandr-dev \
     libxinerama-dev \
     libxext-dev \
-    && apt-get clean
+    && rm -rf /var/lib/apt/lists/*
 
-# Clone and build Raylib
-RUN git clone https://github.com/raysan5/raylib.git /raylib && \
-    cd /raylib && mkdir build && cd build && \
-    cmake .. && make && make install && \
-    cd / && rm -rf /raylib
-
-# Set working directory for the project
-WORKDIR /usr/src/app
+# Download and build Raylib
+RUN git clone https://github.com/raysan5/raylib.git /raylib \
+    && cd /raylib/src \
+    && make PLATFORM=PLATFORM_DESKTOP \
+    && make install PLATFORM=PLATFORM_DESKTOP
 
 # Copy the project files into the container
 COPY . .
 
-# Set the entrypoint to compile and run the project
-ENTRYPOINT ["make", "run"]
+# Compile the project
+RUN make
+
+# Default command to run the program
+CMD ["./main"]
