@@ -7,6 +7,9 @@
 class Button{
     Rectangle rect;
     bool is_pressed;
+    int font_size;
+    int textWidth, textHeight;
+    float textX, textY;
     public:
     Button(Rectangle rect);
     void Update();
