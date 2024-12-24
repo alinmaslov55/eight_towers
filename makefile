@@ -1,9 +1,9 @@
 # Compiler and flags
 CXX = g++
-CXXFLAGS = -Wall -std=c++20 -I/raylib/src -Iinclude
+CXXFLAGS = -Wall -std=c++20 -Iinclude -I/raylib/src -fPIE
 
 # Linker flags
-LDFLAGS = -L/raylib/src -lraylib -lGL -lm -lpthread -ldl -lrt -lX11
+LDFLAGS = -L/raylib/src -lraylib -lGL -lm -lpthread -ldl -lrt -lX11 -pie
 
 # Directories
 SRC_DIR = src
@@ -11,16 +11,16 @@ BUILD_DIR = build
 INCLUDE_DIR = include
 
 # Source files and object files
-SRCS = $(wildcard $(SRC_DIR)/*.cpp)
-OBJS = $(patsubst $(SRC_DIR)/%.cpp, $(BUILD_DIR)/%.o, $(SRCS))
+SRCS = $(wildcard $(SRC_DIR)/*.cpp)   # All source files in src/
+OBJS = $(patsubst $(SRC_DIR)/%.cpp, $(BUILD_DIR)/%.o, $(SRCS))  # Object files in build/
 
 # Output binary
 TARGET = main
 
-# Rules
+# Default target: build the project
 all: $(TARGET)
 
-# Link all object files to create the final binary
+# Link object files into the final binary
 $(TARGET): $(OBJS)
 	$(CXX) $(CXXFLAGS) $^ -o $@ $(LDFLAGS)
 
@@ -38,6 +38,9 @@ clean:
 
 # PHONY targets
 .PHONY: all clean
+
+
+
 
 ## Compiler and Flags
 #CXX = g++

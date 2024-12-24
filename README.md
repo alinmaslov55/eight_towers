@@ -25,8 +25,30 @@
         sau
     - Container Docker creat automat de platformăâ(ex. prin crearea fișierelor de configurare CI/CD): **2 puncte**
 
-### Comentariu asupra Problemei
+## Comentariu asupra Problemei
 
 - Problema celor 8 turnuri este o variație a problemei celor 8 regine, însă cu condiții mai simple
 - Conform regulilor de Șah, turnurile se atacă doar pe rânduri și coloane, nu și diagonale.
 - Soluția poate fi abordată prin backtracking
+- Au fost create 2 versiuni a problemei
+    1. Cu afisaj in terminal
+        - Poate afisa toate solutiile problemei
+    2. Cu Interfata Grafica prin libraria ```raylib.h```
+        - Afiseaza o singura solutie random la fiecare click de buton
+
+        ![Interfata GUI cu Raylib](imgReadme/GUI.png)
+
+## Listele de Comenzi ale proiectului
+
+- Crearea Imaginii Docker
+    ```bash
+    docker build -t <project-name> .
+    ```
+- Run la Container
+    1. Rularea imaginii ia in considerare stergerea containerului imediat dupa ce se termina rularea lui
+    2. Prima comanda permite Containerului accesul la X11 server
+
+    ```bash
+    xhost +local:docker
+    docker run --rm -e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix raylib_project
+    ```
