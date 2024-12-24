@@ -83,19 +83,21 @@ bool Cell::verify(int i, int j){
     _____
 */
     if(i == 1){
-        if(j == 1 || j == 2 || j == 3) return true;
+        if(j == 1 || j == 2 || j == 3) 
+        return true;
     }
     if(i == 2 || i == 3){
         if(j == 2) return true;
     }
 
-    return true;
+    return false;
 }
 void Cell::Update(bool status){
     this->is_occupied = status;
 }
 void Cell::Draw(){
     // Draw the cell
+
     for(int i = 0; i < PARTS; i++){
         for(int j = 0; j < PARTS; j++){
             if(this->is_occupied && verify(i, j)){
