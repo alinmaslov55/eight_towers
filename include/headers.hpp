@@ -6,6 +6,7 @@
 #include <fstream>
 #include <string>
 #include <algorithm>
+#include "solution.hpp"
 #include "raylib.h"
 
 extern const int ANCHOR;
@@ -18,6 +19,10 @@ extern const float BOARD_SIZE;
 extern const float CELL_SIZE;
 extern const float GAP_SIZE;
 extern const float BIG_GAP_SIZE;
+extern const float BUTTON_WIDTH;
+extern const float BUTTON_HEIGHT;
+extern const float BUTTON_X;
+extern const float BUTTON_Y;
 
 extern const std::vector<std::vector<bool>> vector_for_testing;
 

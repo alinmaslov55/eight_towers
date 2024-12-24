@@ -10,6 +10,10 @@ extern const int WINDOW_HEIGHT = 700;
 extern const int PARTS = 5;
 extern const float GAP_SIZE = 3.0f;
 extern const float BIG_GAP_SIZE = 10.0f;
+extern const float BUTTON_WIDTH = 200.0f;
+extern const float BUTTON_HEIGHT = 100.0f;
+extern const float BUTTON_X = 100.0f;
+extern const float BUTTON_Y = 100.0f;
 
 extern const std::vector<std::vector<bool>> vector_for_testing = {
     {false, false, false, false, false, false, false, false},
