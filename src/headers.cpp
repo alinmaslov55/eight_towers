@@ -11,7 +11,7 @@ extern const int PARTS = 5;
 extern const float GAP_SIZE = 3.0f;
 extern const float BIG_GAP_SIZE = 10.0f;
 
-extern std::vector<std::vector<bool>> vector_for_testing = {
+extern const std::vector<std::vector<bool>> vector_for_testing = {
     {false, false, false, false, false, false, false, false},
     {false, true, false, false, false, false, false, false},
     {false, false, true, false, false, false, false, false},

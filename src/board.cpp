@@ -15,10 +15,11 @@ Board::Board(){
             Cell cell(x + j * (CELL_SIZE + GAP_SIZE), 
                     y + i * (CELL_SIZE + GAP_SIZE), 
                     (color == WHITE) ? false : true);
+            row.push_back(cell);
             if(color == WHITE){
-                starting_color = BLACK;
+                color = BLACK;
             } else {
-                starting_color = WHITE;
+                color = WHITE;
             }
         }
 
@@ -27,7 +28,9 @@ Board::Board(){
         } else if(starting_color == BLACK){
             starting_color = WHITE;
         }
+        cells.push_back(row);
     }
+    cells.shrink_to_fit();
 }
 
 void Board::Draw(){
@@ -41,7 +44,7 @@ void Board::Draw(){
     }
 }
 
-void Board::Update(std::vector<std::vector<bool>>& vec){
+void Board::Update(const std::vector<std::vector<bool>>& vec){
     for(int i = 0; i < ANCHOR; i++){
         for(int j = 0; j < ANCHOR; j++){
             cells[i][j].Update(vec[i][j]);
@@ -61,16 +64,15 @@ Cell::Cell(float x, float y, bool is_black){
         std::vector<Rectangle> row;
         for(int j = 0; j < PARTS; j++){
             Rectangle part = {
-                x + (j * PARTS),
-                y + (i * PARTS),
-                CELL_SIZE,
-                CELL_SIZE
+                x + (j * 10),
+                y + (i * 10),
+                10,
+                10
             };
             row.push_back(part);   
         }
         this->parts.push_back(row);
     }
-
 }
 bool Cell::verify(int i, int j){
 /*

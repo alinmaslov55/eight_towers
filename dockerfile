@@ -18,7 +18,9 @@ RUN apt-get update && apt-get install -y \
     libxrandr-dev \
     libxinerama-dev \
     libxext-dev \
-    && rm -rf /var/lib/apt/lists/*
+    && rm -rf /var/lib/apt/lists/* \
+    mesa-utils \
+    libgl1-mesa-dri
 
 # Download and build Raylib
 RUN git clone https://github.com/raysan5/raylib.git /raylib \

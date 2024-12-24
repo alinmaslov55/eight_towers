@@ -19,7 +19,7 @@ class Board{
     public:
     Board();
     void Draw();
-    void Update(std::vector<std::vector<bool>>& vec);
+    void Update(const std::vector<std::vector<bool>>& vec);
 };
 
 

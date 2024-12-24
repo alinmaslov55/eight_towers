@@ -19,7 +19,7 @@ extern const float CELL_SIZE;
 extern const float GAP_SIZE;
 extern const float BIG_GAP_SIZE;
 
-extern std::vector<std::vector<bool>> vector_for_testing;
+extern const std::vector<std::vector<bool>> vector_for_testing;
 
 bool operator==(const Color& lhs, const Color& rhs);
 

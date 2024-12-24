@@ -9,9 +9,9 @@ int main(){
     SetTargetFPS(60);
 
     while(!WindowShouldClose()){
-        my_window.Draw();
         my_window.Update();
         
+        my_window.Draw();
     }
 
     CloseWindow();
