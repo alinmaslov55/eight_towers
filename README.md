@@ -40,15 +40,50 @@
 
 ## Listele de Comenzi ale proiectului
 
-- Crearea Imaginii Docker
-    ```bash
-    docker build -t <project-name> .
-    ```
-- Run la Container
-    1. Rularea imaginii ia in considerare stergerea containerului imediat dupa ce se termina rularea lui
-    2. Prima comanda permite Containerului accesul la X11 server
+1. Rulare Proiect pe Linux
+    - Crearea Imaginii Docker
+        ```bash
+        docker build -t <project-name> .
+        ```
+    - Run la Container
+        1. Rularea imaginii ia in considerare stergerea containerului imediat dupa ce se termina rularea lui
+        2. Prima comanda permite Containerului accesul la X11 server
 
-    ```bash
-    xhost +local:docker
-    docker run --rm -e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix raylib_project
+        ```bash
+        xhost +local:docker
+        docker run --rm -e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix <projetc-name>
+        ```
+2. Rulare Proiect pe Windows 10
+    - Instalarea unui subdomeniu de Linux pentru rulare
+    - Crearea Imaginii Docker
+        ```bash
+        docker build -t <project-name> .
+        ```
+    - Run la Container
+        ```bash
+        docker run --rm -e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix <project-name>
+        ```
+
+## Probleme intampinate
+
+- Intrucat containerul este rulat in baza unei image ce simuleaza o distributie de Linux, apar probleme in momentul rularii motivul fiind o eroare de initializare GLFW
+  ![terminal_image_of_problem](imgReadme/problema.png)
+- Aceasta a putut fi rezolvata doar prin descarcarea unui subdomeniu linux(Debian)
+
+## Comenzi Pentru Prezentare
+
+1. DockerHub
     ```
+    docker pull alinmaslov55/eight_towers:latest
+    docker run --rm -e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix alinmaslov55/eight_towers:latest
+    ```
+2. Github
+    ```
+    docker pull ghcr.io/alinmaslov55/eight_towers:latest
+    docker run --rm -e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix ghcr.io/alinmaslov55/eight_towers:latest
+    ```
+3. Link la Conturi
+    - **Github** - https://github.com/alinmaslov55
+    - **DockerHub** - https://hub.docker.com/u/alinmaslov55
+4. Link la Proiect
+    - https://github.com/alinmaslov55/eight_towers.git

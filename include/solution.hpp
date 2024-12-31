@@ -12,7 +12,9 @@ public:
     static std::vector<std::vector<bool>> getRandomSolution();
 
 private:
+    // functie apelata recursiv in getRandomSolution()
     static void getOneSolution(std::vector<std::vector<bool>>& table, int n);
+    // functie care verifica daca un rand este sau nu este ocupat de un turn
     static bool rowIsFalse(const std::vector<std::vector<bool>>& vec, int row);
 };
 
