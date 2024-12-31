@@ -31,12 +31,24 @@
 - Conform regulilor de Șah, turnurile se atacă doar pe rânduri și coloane, nu și diagonale.
 - Soluția poate fi abordată prin backtracking
 - Au fost create 2 versiuni a problemei
-    1. Cu afisaj in terminal
+    1. Cu afisaj in terminal (abandonata)
         - Poate afisa toate solutiile problemei
     2. Cu Interfata Grafica prin libraria ```raylib.h```
         - Afiseaza o singura solutie random la fiecare click de buton
 
         ![Interfata GUI cu Raylib](imgReadme/GUI.png)
+
+## Resurse utilizate
+
+- Documentatia oficiala
+    1. C++ - https://en.cppreference.com/w/
+    2. Raylib - https://www.raylib.com/cheatsheet/cheatsheet.html
+- Mediu de lucru
+    1. Sistem de Operare - Linux - Fedora
+    2. Make & G++ C++ Compiler
+    3. Editor de Text - VS Code
+
+
 
 ## Listele de Comenzi ale proiectului
 
